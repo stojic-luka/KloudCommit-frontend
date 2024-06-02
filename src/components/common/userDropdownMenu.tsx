@@ -1,4 +1,5 @@
 import { RefObject, forwardRef, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { UserContext } from "../../context/auth/userContext";
 import { useLogout } from "../../hooks/auth/useLogout";
@@ -36,6 +37,13 @@ const CustomSlide = forwardRef((props: TransitionProps & { children: React.React
 interface Props {
   navbarRef: RefObject<HTMLDivElement>;
 }
+/**
+ * Renders the user dropdown menu in the navbar.
+ *
+ * @param {Props} props - The component props.
+ * @param {RefObject<HTMLDivElement>} props.navbarRef - A reference to the navbar element.
+ * @return {JSX.Element} The rendered user dropdown menu.
+ */
 export default function NavbarUserMenu({ navbarRef }: Props) {
   const { email, username } = useContext(UserContext);
   const { logout } = useLogout();
@@ -56,13 +64,16 @@ export default function NavbarUserMenu({ navbarRef }: Props) {
         onClick={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         TransitionComponent={CustomSlide}
+        transitionDuration={100}
         sx={menuStyles}
       >
         <MenuItem divider>
-          <div className="mr-3">
-            <Avatar />
-          </div>
-          {email}
+          <Link to={`/${username}`} className="flex flex-row">
+            <div className="mr-3">
+              <Avatar />
+            </div>
+            <span className="my-auto">{email}</span>
+          </Link>
         </MenuItem>
         <MenuItem onClick={logout} dense>
           Logout

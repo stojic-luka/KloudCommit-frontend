@@ -12,9 +12,9 @@ export const AuthContext = createContext<TokenContextType>({ token: null, authDi
 
 const authReducer = (state: AuthState, action: LogoutAction | LoginAction<AuthState>): AuthState => {
   switch (action.type) {
-    case ACTION.LOGIN:
+    case ACTION.Login:
       return { token: action.payload.token };
-    case ACTION.LOGOUT:
+    case ACTION.Logout:
       return { token: null };
     default:
       return state;
@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }: Props) => {
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     if (token) {
-      authDispatch({ type: ACTION.LOGIN, payload: { token: token } });
+      authDispatch({ type: ACTION.Login, payload: { token: token } });
     }
   }, []);
 

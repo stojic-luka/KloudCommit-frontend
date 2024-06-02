@@ -2,7 +2,13 @@ import { FormEvent, useState } from "react";
 import useLogin from "../../hooks/auth/useLogin";
 import { ThreeDots } from "react-loader-spinner";
 
-export default function LoginForm() {
+/**
+ * Renders a login form component with input fields for email and password.
+ * Handles form submission by calling the `login` function with the entered values.
+ *
+ * @return {JSX.Element} The login form component.
+ */
+export default function LoginForm(): JSX.Element {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useLogin();

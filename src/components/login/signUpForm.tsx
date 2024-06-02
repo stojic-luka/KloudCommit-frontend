@@ -2,7 +2,13 @@ import { FormEvent, useState } from "react";
 import useSignUp from "../../hooks/auth/useSignUp";
 import { ThreeDots } from "react-loader-spinner";
 
-export default function SignUpForm() {
+/**
+ * Renders a sign-up form with input fields for username, email, and password.
+ * Handles form submission by calling the `signUp` function with the entered values.
+ *
+ * @return {JSX.Element} The sign-up form component.
+ */
+export default function SignUpForm(): JSX.Element {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

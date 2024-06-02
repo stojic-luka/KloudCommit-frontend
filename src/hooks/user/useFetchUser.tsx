@@ -1,16 +1,15 @@
-import { useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 import { DataResponse, ErrorResponse } from "../../types/responseTypes";
-import { RepoData } from "../../types/fetchRepoTypes";
+import { UserData } from "../../types/fetchUserTypes";
 
-export default function useFetchRepos() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+export default function useFetchUser() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const fetch = async (username: string) => {
-    setIsLoading(true);
     try {
-      const response = await axios.get<DataResponse<RepoData[]> | ErrorResponse>(`http://repo.kloudcommit.com:8080/api/v1/repos/${username}/`, {
+      const response = await axios.get<DataResponse<UserData> | ErrorResponse>(`http://kloudcommit.com:8080/api/v1/user/${username}/`, {
         validateStatus: (status: number) => status == status,
       });
 
@@ -20,7 +19,7 @@ export default function useFetchRepos() {
         return;
       }
 
-      return response.data as DataResponse<RepoData[]>;
+      return response.data as DataResponse<UserData>;
     } catch (err) {
       setError(String(err));
     } finally {
@@ -28,5 +27,5 @@ export default function useFetchRepos() {
     }
   };
 
-  return { fetchRepos: fetch, isLoadingRepos: isLoading, errorRepos: error };
+  return { fetchUser: fetch, isLoadingUser: isLoading, errorUser: error };
 }

@@ -1,12 +1,12 @@
 export enum ACTION {
-  LOGIN = "login",
-  LOGOUT = "logout",
+  Login = "login",
+  Logout = "logout",
 }
 
 export interface LoginAction<T> {
-  type: ACTION.LOGIN;
+  type: ACTION.Login;
   payload: T;
 }
 export interface LogoutAction {
-  type: ACTION.LOGOUT;
+  type: ACTION.Logout;
 }

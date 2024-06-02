@@ -14,13 +14,13 @@ export const UserContext = createContext<UsernameContextType>({ id: null, email:
 
 const authReducer = (state: UserState, action: LogoutAction | LoginAction<UserState>): UserState => {
   switch (action.type) {
-    case ACTION.LOGIN:
+    case ACTION.Login:
       return {
         id: action.payload.id,
         email: action.payload.email,
         username: action.payload.username,
       };
-    case ACTION.LOGOUT:
+    case ACTION.Logout:
       return { id: null, email: null, username: null };
     default:
       return state;
@@ -37,7 +37,7 @@ export const UserContextProvider = ({ children }: Props) => {
     const userString = sessionStorage.getItem("user");
     if (userString) {
       const user = JSON.parse(userString) as UserState;
-      userDispatch({ type: ACTION.LOGIN, payload: user });
+      userDispatch({ type: ACTION.Login, payload: user });
     }
   }, []);
 
