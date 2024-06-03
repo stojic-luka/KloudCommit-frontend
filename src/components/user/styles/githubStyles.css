@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* h1 {
+    @apply text-2xl;
+  } */
+}
+
+@layer components {
+  .contribution-cell {
+    @apply size-2 p-3px m-3px rounded-sm outline outline-2;
+  }
+
+  .blank-contribution-cell {
+    @apply size-2 p-3px m-3px bg-transparent;
+  }
+}
+
+@layer utilities {
+  .p-3px {
+    padding: 3px;
+  }
+
+  .m-3px {
+    margin: 3px;
+  }
+
+  .bg-lvl-1 {
+    fill: #ebedf0;
+    background-color: #ebedf0;
+    outline-color: #dfe1e4;
+  }
+
+  .bg-lvl-2 {
+    fill: #9be9a8;
+    background-color: #9be9a8;
+    outline-color: #94dda0;
+  }
+
+  .bg-lvl-3 {
+    fill: #40c463;
+    background-color: #40c463;
+    outline-color: #3eba5f;
+  }
+
+  .bg-lvl-4 {
+    fill: #30a14e;
+    background-color: #30a14e;
+    outline-color: #2f9a4b;
+  }
+
+  .bg-lvl-5 {
+    fill: #216e39;
+    background-color: #216e39;
+    outline-color: #216a38;
+  }
+}

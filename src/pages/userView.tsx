@@ -7,6 +7,9 @@ import { RepoData } from "../types/fetchRepoTypes";
 
 import BrowseReposSidebar from "../components/home/browseReposSidebar";
 import TabView, { Tab } from "../components/user/tabView";
+import ProfileTab from "../components/user/profileTab";
+
+import "./styles/userViewStyles.css";
 
 /**
  * Renders the UserView component which displays user information and their repositories.
@@ -46,24 +49,27 @@ export default function UserView(): JSX.Element {
   if (isLoadingUser) return <div>Loading...</div>;
   if (!user || errorUser) return <Navigate to="/404" />;
 
+  // TODO: add created at to the server
+  user.createdAt = new Date(2020, 1, 1);
+
   return (
     <div className="flex flex-row h-full">
-      <TabView>
-        <Tab label="Home">
-          <div>
-            <h1>home</h1>
-          </div>
-        </Tab>
-        <Tab label="Repositories">
-          {isLoadingRepos ? (
-            <span className="mx-auto">Loading repos...</span>
-          ) : errorRepos || !repos ? (
-            <span className="mx-auto">Error loading repos</span>
-          ) : (
-            <BrowseReposSidebar repos={repos} />
-          )}
-        </Tab>
-      </TabView>
+      <div className="container-lg">
+        <TabView>
+          <Tab label="Profile">
+            <ProfileTab createdAtYear={user.createdAt.getFullYear()} />
+          </Tab>
+          <Tab label="Repositories">
+            {isLoadingRepos ? (
+              <span className="mx-auto">Loading repos...</span>
+            ) : errorRepos || !repos ? (
+              <span className="mx-auto">Error loading repos</span>
+            ) : (
+              <BrowseReposSidebar repos={repos} />
+            )}
+          </Tab>
+        </TabView>
+      </div>
     </div>
   );
 }

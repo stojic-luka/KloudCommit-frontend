@@ -6,7 +6,7 @@ interface TabProps {
   children: ReactNode;
 }
 export const Tab = ({ children }: TabProps) => {
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 interface TabViewProps {
@@ -41,15 +41,21 @@ export default function TabView({ children }: TabViewProps): ReactElement {
   };
 
   return (
-    <div>
-      <div>
+    <>
+      <div className="w-full [&>button]:px-3 [&>button]:py-1 m-2">
         {children.map((child, index) => (
-          <button key={index} onClick={() => handleChangeTab(index)}>
+          <button key={index} onClick={() => handleChangeTab(index)} className={`${index === activeTab ? "btn-blue" : ""}`}>
             {child.props.label}
           </button>
         ))}
       </div>
-      <div>{children[activeTab]}</div>
-    </div>
+      <div className="mx-auto">
+        {children.map((child, index) => (
+          <div key={index} style={{ display: index === activeTab ? "block" : "none" }}>
+            {child}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

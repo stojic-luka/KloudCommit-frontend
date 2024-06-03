@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* h1 {
+    @apply text-2xl;
+  } */
+}
+
+@layer components {
+  .container-lg {
+    @apply w-container-lg mx-auto;
+  }
+
+  .container-md {
+    @apply w-container-md mx-auto;
+  }
+}
+
+@layer utilities {
+  .w-container-lg {
+    width: 960px;
+  }
+
+  .w-container-md {
+    width: 720px;
+  }
+}

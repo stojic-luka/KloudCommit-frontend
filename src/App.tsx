@@ -12,7 +12,7 @@ export default function App() {
   const { token } = useContext(AuthContext);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <BrowserRouter>
         <NavBar />
         <div className="flex-1">
