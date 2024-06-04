@@ -1,13 +1,11 @@
-import { ReactElement, ReactNode, useEffect, useState } from "react";
+import { ReactElement, ReactNode, useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface TabProps {
   label: string;
   children: ReactNode;
 }
-export const Tab = ({ children }: TabProps) => {
-  return <>{children}</>;
-};
+export const Tab = ({ children }: TabProps) => <>{children}</>;
 
 interface TabViewProps {
   children: ReactElement[];
@@ -34,15 +32,15 @@ export default function TabView({ children }: TabViewProps): ReactElement {
     }
   }, []);
 
-  const handleChangeTab = (index: number) => {
+  const handleChangeTab = useCallback((index: number) => {
     setActiveTab(index);
     const tabName = children[index].props.label.toLowerCase();
     index === 0 ? navigate("", { replace: true }) : navigate(`?tab=${tabName}`, { replace: true });
-  };
+  }, []);
 
   return (
     <>
-      <div className="w-full [&>button]:px-3 [&>button]:py-1 m-2">
+      <div className="w-full [&>button]:px-3 [&>button]:py-1 m-3">
         {children.map((child, index) => (
           <button key={index} onClick={() => handleChangeTab(index)} className={`${index === activeTab ? "btn-blue" : ""}`}>
             {child.props.label}
@@ -50,8 +48,12 @@ export default function TabView({ children }: TabViewProps): ReactElement {
         ))}
       </div>
       <div className="mx-auto">
+        {/**
+         * Using display: block | none to prevent re-rendering
+         * caused by mounting and unmounting continuously
+         */}
         {children.map((child, index) => (
-          <div key={index} style={{ display: index === activeTab ? "block" : "none" }}>
+          <div key={index} className={(index === activeTab ? "h-auto" : "h-0") + " overflow-hidden"}>
             {child}
           </div>
         ))}

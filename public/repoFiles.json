@@ -1,0 +1,140 @@
+{
+  "name": "",
+  "files": [".env", ".gitattributes", ".gitignore", "LICENSE", "package-lock.json", "package.json", "printDir.py", "README.md", "tsconfig.json"],
+  "folders": [
+    {
+      "name": "src",
+      "files": ["index.ts"],
+      "folders": [
+        {
+          "name": "config",
+          "files": ["allowedOrigins.ts", "corsOptions.ts"],
+          "folders": null
+        },
+        {
+          "name": "middlewares",
+          "files": null,
+          "folders": [
+            {
+              "name": "logger",
+              "files": ["logger.ts"],
+              "folders": null
+            }
+          ]
+        },
+        {
+          "name": "repo",
+          "files": null,
+          "folders": [
+            {
+              "name": "controllers",
+              "files": ["gitController.ts", "reposController.ts"],
+              "folders": null
+            },
+            {
+              "name": "db",
+              "files": ["index.ts"],
+              "folders": null
+            },
+            {
+              "name": "exceptions",
+              "files": ["baseException.ts", "repoExceptions.ts"],
+              "folders": null
+            },
+            {
+              "name": "git",
+              "files": ["index.ts"],
+              "folders": null
+            },
+            {
+              "name": "middlewares",
+              "files": ["parseRepoName.ts", "responseWrappers.ts"],
+              "folders": [
+                {
+                  "name": "exceptionHandlers",
+                  "files": ["internalExceptionHandler.ts", "invalidRouteHandler.ts"],
+                  "folders": null
+                }
+              ]
+            },
+            {
+              "name": "routes",
+              "files": ["gitRouter.ts", "reposRoutes.ts"],
+              "folders": null
+            },
+            {
+              "name": "types",
+              "files": ["responseTypes.ts"],
+              "folders": null
+            }
+          ]
+        },
+        {
+          "name": "web",
+          "files": ["webApp.ts"],
+          "folders": [
+            {
+              "name": "config",
+              "files": ["auth.ts"],
+              "folders": null
+            },
+            {
+              "name": "controllers",
+              "files": ["authController.ts", "userController.ts"],
+              "folders": null
+            },
+            {
+              "name": "db",
+              "files": ["index.ts", "users.ts"],
+              "folders": null
+            },
+            {
+              "name": "exceptions",
+              "files": ["authExceptions.ts", "baseException.ts", "userExceptions.ts", "validationExceptions.ts"],
+              "folders": null
+            },
+            {
+              "name": "middlewares",
+              "files": ["auth.ts", "checkHost.ts", "cridentials.ts", "responseWrappers.ts"],
+              "folders": [
+                {
+                  "name": "exceptionHandlers",
+                  "files": ["internalExceptionHandler.ts", "invalidRouteHandler.ts"],
+                  "folders": [
+                    {
+                      "name": "thirdPartyExceptionHandlers",
+                      "files": ["index.ts", "jwtExceptionHandler.ts"],
+                      "folders": null
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "routes",
+              "files": null,
+              "folders": [
+                {
+                  "name": "v1",
+                  "files": ["authRoutes.ts", "userRoutes.ts"],
+                  "folders": null
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "types",
+      "files": null,
+      "folders": [
+        {
+          "name": "express",
+          "files": ["index.d.ts"],
+          "folders": null
+        }
+      ]
+    }
+  ]
+}

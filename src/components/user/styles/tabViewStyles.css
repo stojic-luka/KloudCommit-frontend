@@ -22,4 +22,21 @@
   .border-1 {
     border-width: 1px;
   }
+
+  .animate-fade {
+    animation: fade 1s ease-in-out;
+  }
+
+  .animate-fade-reverse {
+    animation: fade 1s ease-in-out reverse;
+  }
+
+  @keyframes spin {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 }

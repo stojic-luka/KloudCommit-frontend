@@ -10,7 +10,7 @@ interface Props {
  * @param {RepoData[]} props.repos - The array of repository data.
  * @return {JSX.Element} The rendered BrowseReposSidebar component.
  */
-export default function BrowseReposSidebar({ repos }: Props) {
+export default function BrowseReposSidebar({ repos }: Props): JSX.Element {
   return (
     <div className="px-3 h-full">
       {repos

@@ -1,9 +1,12 @@
-import { useParams } from "react-router-dom";
+import { FileBrowser } from "../components/repo/fileBrowser";
 
 export default function RepoView() {
-  const { username, repoName, repoBranch, "*": repoPath } = useParams();
+  // const { username, repoName, repoBranch, "*": repoPath } = useParams();
+  // console.log({ username: username, repoName: repoName, repoBranch: repoBranch, repoPath: repoPath });
 
-  console.log({ username: username, repoName: repoName, repoBranch: repoBranch, repoPath: repoPath });
-
-  return <div></div>;
+  return (
+    <div>
+      <FileBrowser />
+    </div>
+  );
 }

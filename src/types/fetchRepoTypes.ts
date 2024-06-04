@@ -13,3 +13,15 @@ export interface RepoCommit {
   author_name: string;
   author_email: string;
 }
+
+export interface RepoContributions {
+  color: string;
+  contributionCount: number;
+  date: string;
+}
+
+export interface RepoFiles {
+  name: string;
+  type: string[] | null;
+  folders: RepoFiles[] | null;
+}
