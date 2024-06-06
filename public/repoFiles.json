@@ -133,6 +133,11 @@
           "name": "express",
           "files": ["index.d.ts"],
           "folders": null
+        },
+        {
+          "name": "empty",
+          "files": null,
+          "folders": null
         }
       ]
     }

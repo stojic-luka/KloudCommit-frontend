@@ -9,7 +9,7 @@ import { RepoFiles } from "../../types/fetchRepoTypes";
  * @return {Object} An object containing the fetchRepoFiles function, isLoadingRepoFiles boolean, and errorRepoFiles string or null.
  */
 export const useFetchRepoFiles = (): {
-  fetchRepoFiles: (username: string, repo: string) => Promise<RepoFiles[] | void>;
+  fetchRepoFiles: (username: string, repo: string) => Promise<RepoFiles | void>;
   isLoadingRepoFiles: boolean;
   errorRepoFiles: string | null;
 } => {
@@ -24,10 +24,10 @@ export const useFetchRepoFiles = (): {
    * @returns {Promise<DataResponse<string[]> | void>} A promise that resolves to a DataResponse containing an array of file names
    * if the request is successful, or void if an error occurs.
    */
-  const fetch = async (username: string, repo: string): Promise<RepoFiles[] | void> => {
+  const fetch = async (username: string, repo: string): Promise<RepoFiles | void> => {
     setIsLoading(true);
     try {
-      const response = await axios.post<RepoFiles[]>(
+      const response = await axios.post<RepoFiles>(
         // `http://repo.kloudcommit.com:8080/api/v1/repos/${username}/${repo}/files`,
         "http://localhost:5173/repoFiles.json",
         { validateStatus: (status: number) => status == status }
@@ -39,7 +39,7 @@ export const useFetchRepoFiles = (): {
       //   return;
       // }
 
-      return response.data as RepoFiles[];
+      return response.data as RepoFiles;
     } catch (err) {
       setError(String(err));
     } finally {

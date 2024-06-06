@@ -22,6 +22,6 @@ export interface RepoContributions {
 
 export interface RepoFiles {
   name: string;
-  type: string[] | null;
+  files: string[] | null;
   folders: RepoFiles[] | null;
 }
