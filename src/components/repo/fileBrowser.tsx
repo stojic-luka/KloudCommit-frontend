@@ -42,9 +42,7 @@ export const FileBrowser = () => {
   const handleOpenFile = (fileName: string) => {
     console.log(fileName);
   };
-  const handlePathAdvance = (pathEnd: string) => {
-    setCurrentPath((path) => `${path}/${pathEnd}`);
-  };
+  const handlePathAdvance = (pathEnd: string) => setCurrentPath((path) => `${path}/${pathEnd}`);
   const handlePathRetrace = () => {
     if (currentPath.length > 1) {
       const newPath = currentPath.slice(0, -1);
@@ -64,29 +62,16 @@ export const FileBrowser = () => {
     const params = new URLSearchParams(location.search);
     let paramsPath = params.get("path");
     if (paramsPath) {
-      //   const editedPath = paramsPath
-      //     .split("/")
-      //     .filter((p) => p)
-      //     .join("/");
-      //   setCurrentPath(`/${editedPath}/`);
-
-      setCurrentPath(
-        paramsPath
-          .split("/")
-          .filter((p) => p)
-          .join("/")
-      );
+      const editedPath = paramsPath
+        .split("/")
+        .filter((p) => p)
+        .join("/");
+      setCurrentPath("/" + editedPath);
     }
-
-    // if (paramsPath) {
-    //   paramsPath = paramsPath.replace(/^\/+|\/+$/g, "");
-    //   setCurrentPath(`/${paramsPath}/`);
-    // }
   }, []);
 
   useEffect(() => {
-    // const paramPath = currentPath.slice(1, -1);
-    const paramPath = currentPath;
+    const paramPath = currentPath.slice(2);
     navigate(currentPath.length > 1 ? `?path=${paramPath}` : "", { replace: true });
   }, [currentPath]);
 
