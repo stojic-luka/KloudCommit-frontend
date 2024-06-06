@@ -45,8 +45,7 @@ export const FileBrowser = () => {
   const handlePathAdvance = (pathEnd: string) => setCurrentPath((path) => `${path}/${pathEnd}`);
   const handlePathRetrace = () => {
     if (currentPath.length > 1) {
-      const newPath = currentPath.slice(0, -1);
-      const lastSlashIndex = newPath.lastIndexOf("/");
+      const lastSlashIndex = currentPath.lastIndexOf("/");
       if (lastSlashIndex !== -1) {
         setCurrentPath((path) => path.substring(0, lastSlashIndex));
       }
@@ -66,7 +65,7 @@ export const FileBrowser = () => {
         .split("/")
         .filter((p) => p)
         .join("/");
-      setCurrentPath("/" + editedPath);
+      setCurrentPath("//" + editedPath);
     }
   }, []);
 
